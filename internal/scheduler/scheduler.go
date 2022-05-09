@@ -366,7 +366,7 @@ func (sc *Scheduler) Status(g *ExecutionGraph) SchedulerStatus {
 	if g.StartedAt.IsZero() {
 		return SchedulerStatus_None
 	}
-	if sc.isRunning(g) {
+	if g.FinishedAt.IsZero() {
 		return SchedulerStatus_Running
 	}
 	if sc.lastError != nil {
